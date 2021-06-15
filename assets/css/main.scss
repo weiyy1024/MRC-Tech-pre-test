@@ -4,26 +4,25 @@ $pad: 900px;
 $desktop: 1200px;
 $computer: 1600px;
 
-@mixin mobile {
-    @media (max-width: $mobile) {
+@mixin computer {
+    @media (max-width: $computer) and (min-width: 1201px){
+        @content;
+    }
+}
+@mixin desktop {
+    @media (max-width: $desktop) and (min-width: 901px) {
         @content;
     }
 }
 
 @mixin pad {
-    @media (max-width: $pad) {
+    @media (max-width: $pad) and (min-width: 601px) {
         @content;
     }
 }
 
-@mixin desktop {
-    @media (max-width: $desktop) {
-        @content;
-    }
-}
-
-@mixin computer {
-    @media (max-width: $computer) {
+@mixin mobile {
+    @media (max-width: $mobile) {
         @content;
     }
 }
@@ -124,8 +123,7 @@ div.header{
 
 //section
     section{
-        margin: 130px auto 0px auto;
-        
+        margin: 130px auto 70px auto;
             #videoContainer{
                 display:flex;
                 flex-wrap:wrap;
@@ -135,15 +133,14 @@ div.header{
                         width: 22%;
                     }
                     @include desktop{
-                        width: 45%;
+                        width: 29%;
                     }
                     @include pad{
-                        width: 50%;
+                        width: 45%;
                     }
                     @include mobile{
                         width: 90%;
                     }
-            
                     margin: 20px 20px 0 20px;
                     #videoImgContainer{
                         position:relative;
