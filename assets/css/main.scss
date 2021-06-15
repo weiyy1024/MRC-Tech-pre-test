@@ -39,10 +39,13 @@ div.header{
         height: 80px;
         border-bottom: 2px solid gray;
         display:flex;
+
+        // 左上youtube logo img
         #logo{
             width: 150px;
             margin: auto 10px;
         }
+        // search bar
         form{ 
             position: absolute;
             top: 20px;
@@ -78,6 +81,8 @@ div.header{
             }
     
         }
+
+        // 右上account
         #member{
             font-size: 35px;
             color: white;
@@ -91,6 +96,7 @@ div.header{
             right: 27px;
         }
     }
+    // keyword search tags
     #keywordContainer{
         padding: 10px 0;
         background-color: white;
@@ -186,6 +192,7 @@ div.header{
                                 }
                                 span.icon{
                                     margin: 0 5px;
+                                    cursor: pointer;
                                 }
                             }
                             div.bottom{
@@ -219,6 +226,7 @@ div.header{
         background-color: white;
         border-top: rgb(241, 241, 241) 1px solid;
         span{
+            cursor: pointer;
             text-align: center;
             width: 25%;
             svg{
