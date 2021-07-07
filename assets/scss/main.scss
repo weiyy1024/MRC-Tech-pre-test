@@ -1,0 +1,25 @@
+//font
+$font-color-main:#4A4546;
+$font-color-sec:#7a7274;
+$font-color-third:#9a9494;
+
+//bg
+$bg-color-dark:#ed6d6d;
+$bg-color-light:#ffe9e9;
+
+//border
+$border-color-dark:#cdc8c8;
+$border-color-light:#ddd8d8;
+
+// width
+$inner-container:1232px;
+
+body{
+    width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+*{
+    box-sizing: border-box;
+}
