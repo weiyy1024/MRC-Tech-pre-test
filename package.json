@@ -9,12 +9,17 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@chenfengyuan/vue-carousel": "^1.0.6",
     "@nuxtjs/fontawesome": "^1.1.2",
     "core-js": "^3.9.1",
     "fiber": "^1.0.4",
     "nuxt": "^2.15.3",
     "nuxt-fontawesome": "^0.4.0",
-    "pug-plain-loader": "^1.1.0"
+    "pug-plain-loader": "^1.1.0",
+    "swiper": "^6.7.5",
+    "vue": "^2.6.14",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-template-compiler": "^2.6.14"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",

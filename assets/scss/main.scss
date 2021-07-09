@@ -1,3 +1,7 @@
+@mixin size($w, $h) {
+    width: $w;
+    height: $h;
+}
 //font
 $font-color-main:#4A4546;
 $font-color-sec:#7a7274;
@@ -12,14 +16,23 @@ $border-color-dark:#cdc8c8;
 $border-color-light:#ddd8d8;
 
 // width
-$inner-container:1232px;
-
-body{
-    width: 100vw;
-    overflow-x: hidden;
-    margin: 0;
-}
+$inner-container: calc((100vw - 1232px)/2);
 
 *{
     box-sizing: border-box;
+    font-family: MicrosoftYaHei;
+    margin: 0;
+    padding: 0;
 }
+html{
+    font-size: 10px;
+}
+
+.ellipsis{
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+
+
+
