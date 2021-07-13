@@ -1,6 +1,9 @@
 <template lang="pug">
     div
-     .newsImg
+     .news-img-container
+      .newsImg
+       img(src="/img-null.svg")
+      span.img-content.ellipsis 23年前葛优与张国荣的一张合照，中间的女人国荣的一张合照，中间的女人
      .newsTitle(v-for="item in exciusive")
       img.icon(src='/icons/icon-hot.svg')
       a.ellipsis {{ item.title }}
@@ -19,10 +22,25 @@ export default{
 </script>
 <style lang="scss" scoped>
 div{
-    .newsImg{
-        @include size(42rem, 24rem);
-        margin: 2rem 0;
-        background-color: cornflowerblue;
+    .news-img-container{
+        position: relative;
+        margin-bottom: 2rem;
+        width: auto;
+        .newsImg{ 
+            margin: 2rem 0;
+            img{
+                @include size(42rem, 24rem);
+            }
+        }
+        .img-content{
+            width: 100%;
+            position: absolute;
+            padding: 0 24px 12px 24px;
+            font-size: 1.6rem;
+            bottom: 0;
+            color: #ffffff;
+        }    
+
     }
     .newsTitle{
         width: 42rem;

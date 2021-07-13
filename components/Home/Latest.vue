@@ -28,7 +28,12 @@ export default{
     border-bottom: .1rem #cdc8c8 dotted;
     cursor: pointer;
     &:hover{
-            background-color:rgba(255, 233, 233, .4);
+        background-color:rgba(255, 233, 233, .4);
+        .right{
+            .newsTitle{
+                color: $bg-color-dark;
+            }
+        }
     }
     img{
         @include size(24rem, 16rem)
@@ -42,9 +47,7 @@ export default{
             font-size: 2rem;
             letter-spacing: .1rem;
             color: #4a4546;
-            &:hover{
-              color: $bg-color-dark;  
-            }
+            
         }
         p{
             font-size: 1.4rem;
@@ -96,5 +99,4 @@ export default{
         }
     }
 }
-
 </style>

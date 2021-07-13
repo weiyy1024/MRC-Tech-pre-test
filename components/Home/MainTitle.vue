@@ -1,6 +1,7 @@
 <template lang="pug">
-    .title 最新
-     span.titleSec 新闻
+    .title 
+     div 最新
+      span.titleSec 新闻
      span.titleEn Latest News 
 </template>
 <script>
@@ -20,11 +21,26 @@ export default{
 <style lang="scss" scoped>
 .title{
     color: $bg-color-dark;
-    border-bottom: solid 1px #cdc8c8;
     font-size: 2.4rem;
     margin: 0;
-    .titleSec{
-        font-size: 2rem;
+    display: flex;
+    border-bottom: solid 1px #cdc8c8;
+    align-items: flex-end;
+    div{
+        position: relative;
+        bottom: -3px;
+        &::after{
+            content: '';
+            background-color:white;
+            width: 113% ;
+            height: 1px;
+            display: block;
+            position: relative;
+            bottom: 2px;
+        }
+        .titleSec{
+            font-size: 2rem;
+        }
     }
     .titleEn{
         font-size: 1.6rem;
@@ -33,12 +49,11 @@ export default{
         position: relative;
         &::after{
             content: "";
-            background-color:  $bg-color-dark;
+            background-color: $bg-color-dark;
             display: block;
             @include size( 100% , 2px);
             position:absolute;
             left: 0;
-            z-index: 1;
         }
 
     }

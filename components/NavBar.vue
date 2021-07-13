@@ -9,12 +9,13 @@
      .nav-item(v-for='item in navs')
          img.icon(:src="`/icons/icon-${item.key}.svg`")
          span {{ item.title }}
+     .under
     .searchContainer
         img.search(src="/icons/icon-search.svg" @click='toggle')
         .searchBar(v-if='show')
          input.keyword(type="text" placeholder='请输入关键字')
          .searchSubmit 搜寻
-    .mask(v-show='show')
+    .mask(v-show='show' v-scroll-lock="show")
 </template>
 <script>
 export default {
@@ -68,21 +69,17 @@ export default {
     }
     .titleContainer{
         display: flex;
+        position: relative;
         .nav-item{
             padding: 3rem 4rem;
             cursor: pointer;
+            position: relative;
             &:hover{
                 background-color:rgba(255, 233, 233, .2);
-                &::after{
-                    content: "";
-                    display: block;
-                    @include size( 1.8rem , .6rem ) ;
-                    border-radius: .3rem;
-                    background-color: #ffffff;
-                    position: relative;
-                    top: 2.6rem;
-                    left:2.6rem;
-                }
+            }
+            &:nth-child(1) &:hover ~.under{
+            transition: 1s all;
+            transform: translate(142px,0%);
             }
             .icon{
                 @include size(2rem, 2rem);
@@ -93,6 +90,20 @@ export default {
                 margin-left: .8rem;
 
             }
+        }
+        .under{
+            @include size(1.8rem , .6rem);
+            background-color:#ffffff;
+            position:absolute;
+            top: 8.5rem;
+            left: 7rem;
+            border-radius: .3rem;
+            // transform: translate(292px,0%);
+            // transform: translate(440px,0%);
+            // transform: translate(589px,0%);
+            // top: 2.6rem;
+            // left:2.6rem;
+            // transition: .3s ease;
         }
     }
     .searchContainer{
@@ -142,7 +153,7 @@ export default {
     }
     }
     .mask{
-        display: none;
+        position:absolute;
     }
     
 }
@@ -153,6 +164,7 @@ export default {
         z-index: 10;
         position:absolute;
         top: 48px;
+        display: block;
     }
     .container-nav{
         @include size(100%,4.8rem);
@@ -197,8 +209,6 @@ export default {
             }
             img{
                 display: none;
-            }
-            span{
             }
         }
         }

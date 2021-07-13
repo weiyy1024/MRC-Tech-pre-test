@@ -44,10 +44,6 @@ export default{
         display: flex;
         border-radius: .6rem;
         cursor: pointer;
-        &:hover{
-          color: $bg-color-dark;
-          border: .2rem solid $bg-color-dark;
-          font-weight: bold;
           &::after{
             content:'';
             @include size( 0, 0);
@@ -55,6 +51,15 @@ export default{
             border-bottom: 1rem solid transparent;
             border-right: 1rem solid $bg-color-dark;
             margin: 5.4rem 0; 
+            width: 10px;
+            visibility: hidden;
+          }
+        &:hover{
+          color: $bg-color-dark;
+          border: .2rem solid $bg-color-dark;
+          font-weight: bold;
+          &::after{
+            visibility: visible
           }
         }
         img{
