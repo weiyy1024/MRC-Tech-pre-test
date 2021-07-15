@@ -1,24 +1,26 @@
 <template lang="pug">
     .container-c
         .carousel
+          //- Carousel
         .nwsContainer
-            .newsItem(v-for='item in news')
-                img(src='/img-null.svg')
+            .newsItem(v-for='item in newsRight')
+                img(:src='item.Img')
                 .content-container
-                    a {{item.content}}
+                  a {{item.Title}}
     
 </template>
 <script>
 export default{
     name:'HomeBanner',
-    data(){
-        return{
-            news:[
-                {img:'',content:'娱乐圈流行强强联手：王一博给黄景瑜做配？'},
-                {img:'',content:'《密室大逃脱3》邓伦分享西红柿鸡蛋面食谱 王嘉尔教杨幂《密室大逃脱3》邓伦分享西红柿鸡蛋面食谱 王嘉尔教杨幂'},
-                {img:'',content:'错过就是一辈子！分手12年，胡歌捡7年垃圾薛佳凝代发修行1年'}
-                ]
-        }
+    props:{
+      news:{
+        type:Array
+      }
+    },
+    computed:{
+      newsRight(){
+        return this.news.slice(0,3)
+      }
     }
 
 }

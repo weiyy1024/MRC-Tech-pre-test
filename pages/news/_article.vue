@@ -1,18 +1,33 @@
 <template lang="pug">
     section.mainContainer
-            HomeBanner
             .newsContainer
                 .leftContainer
-                    HomeMainTitle
-                    HomeLatest
+                    NuxtChild(keep-alive)
                 .rightContainer
-                    HomeMainTitle
-                    HomeExciusive
                     .advimg
-                    HomeMainTitle
-                    HomeHotspot
+                        img(:src='advStraight[0].Image')
+                    HomeMainTitle(title='今日热点' en='HotSpot')
+                    HomeHotspot(:news='hotspot')
             .HtmlEdit
 </template>
+<script>
+import {mapGetters} from 'vuex'
+
+export default {
+    async asyncData({ store }) {
+    await Promise.all([
+      store.dispatch('hotspot-news/fetch'),
+    ])
+  },
+    computed : {
+      ...mapGetters({
+          hotspot:'hotspot-news/list',
+          advStraight:'adv/straight',
+      })  
+    }
+}
+</script>
+
 <style lang="scss" scoped>
     .mainContainer{
         width: 1232px;
@@ -23,19 +38,15 @@
                 margin: 3rem 0;
                 padding: 1.6rem;
                 .leftContainer{
-                    grid-area: le;
                     width: 74rem;
                     margin-right: 4rem;
                 }
                 .rightContainer{
-                    grid-area: ri;
                     width: 42rem;
                     .advimg{
                         @include size(42rem, 34.6rem);
-                        background-image: url('/img-null.svg');
-                        background-repeat:no-repeat;
-                        background-size: cover;
                         margin: 3rem 0 ;
+                        cursor: pointer;
                     }
                 }
                  

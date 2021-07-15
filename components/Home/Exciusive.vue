@@ -2,11 +2,11 @@
     div
      .news-img-container
       .newsImg
-       img(src="/img-null.svg")
-      span.img-content.ellipsis 23年前葛优与张国荣的一张合照，中间的女人国荣的一张合照，中间的女人
-     .newsTitle(v-for="item in exciusive")
+       img(:src="news[0].Img")
+      span.img-content.ellipsis {{ news[0].Title }}
+     .newsTitle(v-for="item in news")
       img.icon(src='/icons/icon-hot.svg')
-      a.ellipsis {{ item.title }}
+      a.ellipsis {{ item.Title }}
       
 
 </template>
@@ -16,6 +16,11 @@ export default{
     computed:{
         exciusive(){
             return this.$store.state.data.exciusive
+        }
+    },
+    props:{
+        news:{
+            type:Array
         }
     }
 }
@@ -30,6 +35,7 @@ div{
             margin: 2rem 0;
             img{
                 @include size(42rem, 24rem);
+                object-fit: cover;
             }
         }
         .img-content{

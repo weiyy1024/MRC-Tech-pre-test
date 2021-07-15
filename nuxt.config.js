@@ -1,6 +1,16 @@
+import env from './configs'
+import sitemap from './configs/sitemap'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
+  server: {
+    host: '0.0.0.0',
+  },
+
+  env: {
+    VERSION: process.env.VERSION || "development",
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -20,7 +30,7 @@ export default {
   css: ["@/assets/scss/main.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: "~/plugins/v-scroll-lock", mode: "client" }],
+  plugins: [{ src: "~/plugins/v-scroll-lock", mode: "client" },],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -29,7 +39,34 @@ export default {
   buildModules: ["@nuxtjs/style-resources"],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/style-resources"],
+  modules: [
+    "@nuxtjs/style-resources",
+
+    '@nuxtjs/axios',
+
+    '@nuxtjs/proxy',
+
+  ],
+
+  axios: {
+    proxy: true,
+    credentials: true,
+    debug: env.DEBUG,
+    retry: {retries: 3},
+  },
+
+  proxy: {
+    '/api': {
+      target: env.API_URL,
+      changeOrigin: true,
+      pathRewrite: {
+        '^/api': '',
+      },
+      secure: !env.DEBUG,
+    },
+  },
+
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

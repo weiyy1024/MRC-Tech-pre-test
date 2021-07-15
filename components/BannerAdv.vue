@@ -1,5 +1,6 @@
 <template lang="pug">
 .Bitmap.left(v-if='close')
+  img(:src="list.Image")
   img.icon(src="/icons/icon-close.svg" @click='closeHandler')
 </template>
 <script>
@@ -14,7 +15,11 @@ export default{
       closeHandler(){
         this.close=false
       }
-
+    },
+    props:{
+      list:{
+        type:Object
+      }
     }
     
 }
@@ -30,11 +35,10 @@ export default{
 }
 .Bitmap {
   @include size(24rem, 36rem);
-  background: gray;
   position: relative;
-  background-image:url('/img-null.svg') ;
-  background-repeat: no-repeat;
-  background-size: cover;
+  // background-image:url('/img-null.svg') ;
+  // background-repeat: no-repeat;
+  // background-size: cover;
    @media screen and (max-width:1232px){
         display: none;
     }

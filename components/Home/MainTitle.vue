@@ -1,21 +1,21 @@
 <template lang="pug">
     .title 
-     div 最新
-      span.titleSec 新闻
-     span.titleEn Latest News 
+     div {{ title.slice(0, 2) }}
+      span.titleSec {{ title.slice(2) }}
+     span.titleEn {{ en }} 
 </template>
 <script>
 export default{
     name:'Home-MainTitle',
-    data(){
-        return{
-            mainTitle:[
-                {title1:'最新',title2:'新闻',titleEn:'Latest News '},
-                {title1:'独家',title2:'新闻',titleEn:'Exciusive'},
-                {title1:'今日',title2:'热点',titleEn:'Hotspot'}
-            ]
-        }
-    }
+    props:{
+      title :{type:String,require:true},
+      en:{type:String,require:true} 
+    },
+    // computed:{
+    //     titleCn(which){
+    //         return which===1 ? this.title.slice(0, 2) : this.title.slice(2, -1) 
+    //     }
+    // }
 }
 </script>
 <style lang="scss" scoped>

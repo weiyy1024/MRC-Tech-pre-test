@@ -1,21 +1,22 @@
 <template lang="pug">
 .hotnews
-    .hotspotItem(v-for="(item,index) in hotspot")
+    .hotspotItem(v-for="(item,index) in news")
         div
-         .rank(:class="index<=2 ? 'top3':'' ") {{ index +1 }} 
-        img.hotspotImg(src='/img-null.svg')
+         .rank(:class="index<=2 ? 'top3':'' ") {{ index +1 }}
+        div 
+         img.hotspotImg(:src="item.Img")
         .hotspotTitle
-         a {{ item.title }}
+         a {{ item.Title }}
 
 </template>
 <script>
 export default{
     name:'Home-Hotspot',
-    computed:{
-       hotspot(){
-            return this.$store.state.data.hotspot
-        }
-    }
+    props:{
+        news:{
+          type:Array,
+        },
+    },
 
 }
 </script>

@@ -6,10 +6,11 @@
      | 加入我的最愛
     img.logo(src="/logo/logo-pc.svg")
     .titleContainer
-     .nav-item(v-for='item in navs')
-         img.icon(:src="`/icons/icon-${item.key}.svg`")
-         span {{ item.title }}
-     .under
+        .nav-item(v-for='item in navs' @click='handleTab(item.name,$event)' :ref='item.name')
+            div
+                img.icon(:src="`/icons/icon-${item.img}.svg`")
+                span {{ item.title }}
+        .under
     .searchContainer
         img.search(src="/icons/icon-search.svg" @click='toggle')
         .searchBar(v-if='show')
@@ -19,15 +20,15 @@
 </template>
 <script>
 export default {
-    name:'NavBar',
+    name:'NavFirst',
     data(){
         return{
             navs:[
-                {title:'首頁',key:'home'},
-                {title:'獨家',key:'diamond'},
-                {title:'明星',key:'star'},
-                {title:'影視',key:'video'},
-                {title:'時尚',key:'fashion'},
+                {title:'首頁',name:'home',img:'home'},
+                {title:'獨家',name:'exclusive',img:'diamond'},
+                {title:'明星',name:'celebrity',img:'star'},
+                {title:'影視',name:'movie',img:'video'},
+                {title:'時尚',name:'fashion',img:'fashion'},
             ],
             show:false,
         }
@@ -35,8 +36,18 @@ export default {
     methods:{
         toggle(){
             this.show = !this.show
-        }
-    }
+        },
+        handleTab(type,event){
+            if (type === "home") {
+                this.$router.push("/");
+            } else {
+                this.$router.push({path: "/news/" + type});
+            }
+            // console.log(this.$refs[type])
+        },
+       
+    },
+
 }
 </script>
 <style lang="scss" scoped>
@@ -77,10 +88,6 @@ export default {
             &:hover{
                 background-color:rgba(255, 233, 233, .2);
             }
-            &:nth-child(1) &:hover ~.under{
-            transition: 1s all;
-            transform: translate(142px,0%);
-            }
             .icon{
                 @include size(2rem, 2rem);
                 position: relative;
@@ -91,6 +98,9 @@ export default {
 
             }
         }
+        .active{
+            background-color: rgba(255, 233, 233, .2);
+        }
         .under{
             @include size(1.8rem , .6rem);
             background-color:#ffffff;
@@ -98,12 +108,21 @@ export default {
             top: 8.5rem;
             left: 7rem;
             border-radius: .3rem;
+            // transform: translate(142px,0%);
             // transform: translate(292px,0%);
             // transform: translate(440px,0%);
             // transform: translate(589px,0%);
             // top: 2.6rem;
             // left:2.6rem;
-            // transition: .3s ease;
+            transition: transform .3s ease;
+            @media (max-width:1232px) {
+              top: 40px;
+              width: 12px;
+              height: 4px;
+              background-color: $bg-color-dark;
+              border-radius: 2px;
+            }
+
         }
     }
     .searchContainer{
@@ -193,20 +212,20 @@ export default {
                     display: none;
                 }
             }
-            &:active{
-                color: $bg-color-dark;
-                &::after{
-                    display: none;
-                    content: "";
-                    display: block;
-                    @include size( 1.8rem , .6rem ) ;
-                    border-radius: .3rem;
-                    background-color: $bg-color-dark;
-                    position: relative;
-                    top:0;
-                    left: 18px;
-                }
-            }
+            // &:active{
+            //     color: $bg-color-dark;
+            //     &::after{
+            //         display: none;
+            //         content: "";
+            //         display: block;
+            //         @include size( 1.8rem , .6rem ) ;
+            //         border-radius: .3rem;
+            //         background-color: $bg-color-dark;
+            //         position: relative;
+            //         top:0;
+            //         left: 18px;
+            //     }
+            // }
             img{
                 display: none;
             }
@@ -227,5 +246,8 @@ export default {
         }
     }
 
+}
+.active{
+    background-color:rgba(255, 233, 233, .2);
 }
 </style>

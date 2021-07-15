@@ -3,21 +3,25 @@
  .footTop
   p.title 友情链结
   div
-   a.linkItem(v-for='item in footLinks') {{ item }} &nbsp
+   a.linkItem(v-for='item in list') {{ item.FriendName }} &nbsp
   p.title 廣告連結
- .footBottom 
-  Copyright © 2020-2021 星星号外娱乐新闻网 版权所有
+ .footBottom Copyright © 2020-2021 星星号外娱乐新闻网 版权所有
 </template>
 <script>
 export default{
-    name:'Footer',
-    data(){
-      return{
-        footLinks:[
-          '回合制手游','pcb','餐饮加盟','手游','手游下载','爱好游','朱雀','手游下载','雨林木风手游','传奇私服','手机游戏下载网','梦想新大陆','手机游戏下载','博客园','浏览器下载','传奇手游','手游下载','PS5','527U手游','阳光系统','平陆手游网','公益服游戏','网页游戏无限元宝',
-        ]
-      }
+  name:'Footer',
+  data(){
+    return{
+      footLinks:[
+        '回合制手游','pcb','餐饮加盟','手游','手游下载','爱好游','朱雀','手游下载','雨林木风手游','传奇私服','手机游戏下载网','梦想新大陆','手机游戏下载','博客园','浏览器下载','传奇手游','手游下载','PS5','527U手游','阳光系统','平陆手游网','公益服游戏','网页游戏无限元宝',
+      ]
     }
+  },
+  props:{
+    list:{
+      type:Array,
+    },
+  },
     
 }
 </script>
